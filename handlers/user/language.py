@@ -3,7 +3,6 @@ from aiogram import types
 from utils.db_api.user.language import set_language
 
 from keyboards.inline.user.language import get_language_inline_keyboard
-from keyboards.inline.user import get_menu_inline_keyboard
 
 from loader import _
 
@@ -24,5 +23,4 @@ async def choose_language(callback: types.CallbackQuery) -> None:
 
     await callback.message.delete()
 
-    menu_inline_keyboard = get_menu_inline_keyboard(user_language)
-    await callback.message.answer(_('Меню', locale=user_language), reply_markup=menu_inline_keyboard)
+    await callback.message.answer(_('Меню', locale=user_language))
