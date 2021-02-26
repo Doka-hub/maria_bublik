@@ -16,6 +16,7 @@ else:
     database = PostgresqlDatabase(database=config.POSTGRESQL['db'], user=config.POSTGRESQL['user'])
     migrator = PostgresqlMigrator(database)
 
+
 objects = Manager(database)
 
 
@@ -28,12 +29,6 @@ class TGUser(BaseModel):
     LANGUAGE_CHOICES = (
         ('ru', 'ru'),
         ('en', 'en'),
-        ('he', 'he'),
-    )
-    TIME_TO_MAIL = (
-        ('morning', 'morning'),
-        ('evening', 'evening'),
-        ('upon_receipt_of', 'upon_receipt_of'),
     )
 
     user_id = peewee.IntegerField()
