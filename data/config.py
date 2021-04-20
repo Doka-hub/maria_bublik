@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).parent.parent
 LOGS_BASE_PATH = str(BASE_DIR / 'logs')
 
 # BOT settings
-BOT_PLACE = config('BOT_PLACE')
+BOT_PLACE = config('BOT_PLACE', 'locale')
 BOT_TOKEN = config('BOT_TOKEN')
 BASE_URL = config('BASE_URL')  # webhook domain
 ADMINS = []
@@ -26,18 +26,20 @@ TIMEZONE = config('TIMEZONE')
 
 # DATABASE
 POSTGRESQL = {
-    'host': config('POSTGRESQL_HOST'),
-    'user': config('POSTGRESQL_USER'),
-    'db': config('POSTGRESQL_DATABASE_NAME'),
+    'host': config('POSTGRESQL_HOST', 'localhost'),
+    'user': config('POSTGRESQL_USER', 'postgres'),
+    'db': config('POSTGRESQL_DATABASE_NAME', None),
 }
+
 MYSQL = {
-    'host':     config('MYSQL_HOST'),
-    'user':     config('MYSQL_USER'),
-    'password': config('MYSQL_PASSWORD'),
-    'db':       config('MYSQL_DATABASE_NAME'),
+    'host':     config('MYSQL_HOST', 'localhost'),
+    'user':     config('MYSQL_USER', 'root'),
+    'password': config('MYSQL_PASSWORD', None),
+    'db':       config('MYSQL_DATABASE_NAME', None),
     'maxsize':  5,
     'port':     3306,
 }
+
 REDIS = {
     'ip':     config('REDIS_URL', 'redis://127.0.0.1'),
     'port': config('REDIS_PORT', 6379)

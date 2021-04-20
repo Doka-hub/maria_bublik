@@ -23,7 +23,6 @@ async def on_startup(app: web.Application):
     middlewares.setup(dp)
     filters.setup(dp)
     handlers.errors.setup(dp)
-    handlers.chat.setup(dp)
     handlers.user.setup(dp)
     handlers.admin.setup(dp)
     if config.BOT_PLACE == 'server':

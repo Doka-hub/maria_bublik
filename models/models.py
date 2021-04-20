@@ -38,4 +38,3 @@ class TGUser(BaseModel):
     language = peewee.CharField(max_length=3, null=True, choices=LANGUAGE_CHOICES)
 
     blocked_by_user = peewee.BooleanField(default=False)
-    can_use_bot = peewee.BooleanField(default=False)
