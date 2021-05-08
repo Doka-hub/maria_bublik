@@ -25,13 +25,13 @@ async def on_startup(app: web.Application):
     handlers.errors.setup(dp)
     handlers.admin.setup(dp)
     handlers.user.setup(dp)
-    if config.BOT_PLACE == 'server':
-        logger.info('Configure Webhook URL to: {url}', url=config.WEBHOOK_URL)
-        print(config.WEBHOOK_URL)
-        await dp.bot.delete_webhook()
-        await dp.bot.set_webhook(config.WEBHOOK_URL)
-    elif config.BOT_PLACE == 'locale':
-        await dp.start_polling()
+    # if config.BOT_PLACE == 'server':
+    #     logger.info('Configure Webhook URL to: {url}', url=config.WEBHOOK_URL)
+    #     print(config.WEBHOOK_URL)
+    #     await dp.bot.delete_webhook()
+    #     await dp.bot.set_webhook(config.WEBHOOK_URL)
+    # elif config.BOT_PLACE == 'locale':
+    #     await dp.start_polling()
 
 
 async def on_shutdown(app: web.Application):
