@@ -28,7 +28,7 @@ TIMEZONE = config('TIMEZONE')
 POSTGRESQL = {
     'host': config('POSTGRESQL_HOST', 'localhost'),
     'user': config('POSTGRESQL_USER', 'postgres'),
-    'db': config('POSTGRESQL_DATABASE_NAME', None),
+    'db': config('POSTGRESQL_DATABASE_NAME', 'maria_bublik'),
 }
 
 MYSQL = {
@@ -41,6 +41,6 @@ MYSQL = {
 }
 
 REDIS = {
-    'ip':     config('REDIS_URL', 'redis://127.0.0.1'),
+    'host':     config('REDIS_URL', 'redis://127.0.0.1'),
     'port': config('REDIS_PORT', 6379)
 }

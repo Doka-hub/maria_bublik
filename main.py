@@ -27,6 +27,7 @@ async def on_startup(app: web.Application):
     handlers.admin.setup(dp)
     if config.BOT_PLACE == 'server':
         logger.info('Configure Webhook URL to: {url}', url=config.WEBHOOK_URL)
+        print(config.WEBHOOK_URL)
         await dp.bot.set_webhook(config.WEBHOOK_URL)
     elif config.BOT_PLACE == 'locale':
         await dp.start_polling()
