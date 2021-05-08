@@ -4,28 +4,21 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 from utils.keyboards.inline import get_inline_keyboard
 from utils.db_api.admin.mail import get_message_template_list
-from utils.db_api.user import get_material_format_list
-
-from data import config
 
 from loader import _
 
 
-async def get_group_list_to_mail_inline_keyboard() -> InlineKeyboardMarkup:
-    group_list = [
-        [
-            InlineKeyboardButton(_('Группа {}').format(group.name), callback_data=f'mail_create {group.id}'),
-        ] for group in await get_material_format_list()
-    ]
-    group_list_inline_keyboard = get_inline_keyboard(
-        [
-            [
-                InlineKeyboardButton(_('Пользователям бота'), callback_data='mail_users')
-            ]
-        ] + group_list,
-        True, 'menu'
+def get_mail_create_message(mail_data: Dict) -> str:
+    title = mail_data.get('title')
+    text = mail_data.get('text')
+
+    message = (
+        f'*{title}*\n\n{text}' if title and text else
+        f'*{title}*\n\n' if title and not text else
+        f'{text}' if text and not title else
+        _('Создание рассылки:\n')
     )
-    return group_list_inline_keyboard
+    return message
 
 
 def get_mail_detail_inline_button(button: str) -> Optional[List[InlineKeyboardButton]]:
@@ -130,7 +123,7 @@ def get_mail_create_inline_keyboard(mail_data: Dict) -> InlineKeyboardMarkup:
             [
                 InlineKeyboardButton(
                     _('Отмена'),
-                    callback_data=f'mail_create__cancel {mail_data["group_id"]}'
+                    callback_data=f'mail_create__cancel'
                 )
             ],
         ]

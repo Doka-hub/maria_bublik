@@ -14,6 +14,6 @@ class WhiteListFilter(BoundFilter):
         user_id = message.from_user.id
         try:
             user = await objects.get(TGUser.filter(TGUser.user_id == user_id))
-            return user.can_use_bot
+            return user.is_active
         except DoesNotExist:
             return False

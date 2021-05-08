@@ -1,6 +1,7 @@
-from .models import objects, TGUser, migrator, migrate, DoesNotExist
+from .models import objects, MaterialFormat, TGUser, MessageTemplate, migrator, migrate, DoesNotExist
 
 
 def setup():
-    if not TGUser.table_exists():
-        TGUser.create_table()
+    MaterialFormat.setup()
+    TGUser.setup()
+    MessageTemplate.setup()
