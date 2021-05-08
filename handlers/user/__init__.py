@@ -1,14 +1,18 @@
 from aiogram import Dispatcher, types
-from aiogram.dispatcher.filters import CommandStart, CommandHelp
+from aiogram.dispatcher.filters import CommandStart
+
+from states.user import TGUserState
 
 from .start import bot_start
-from .language import choose_language, change_language
+from .user import user_name__handler, user_material_format__handler
 
 
 def setup(dp: Dispatcher):
     # Старт
-    dp.register_message_handler(bot_start, CommandStart())
+    dp.register_message_handler(bot_start, CommandStart(), in_whitelist=True)
 
-    # Язык
-    dp.register_callback_query_handler(choose_language, lambda callback: callback.data.startswith('choose_language '))
-    dp.register_callback_query_handler(change_language, lambda callback: callback.data == 'change_language')
+    # Пользователь
+    dp.register_message_handler(user_name__handler, state=TGUserState.name)
+    dp.register_callback_query_handler(user_material_format__handler,
+                                       callback_data__startswith='material_format_choose ',
+                                       state=TGUserState.material_format)

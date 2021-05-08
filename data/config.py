@@ -11,7 +11,10 @@ LOGS_BASE_PATH = str(BASE_DIR / 'logs')
 BOT_PLACE = config('BOT_PLACE', 'locale')
 BOT_TOKEN = config('BOT_TOKEN')
 BASE_URL = config('BASE_URL')  # webhook domain
-ADMINS = []
+ADMINS = [
+    539655707,  # Дока
+    362044897  # Мария
+]
 
 # WEBHOOK settings
 WEBHOOK_PATH = f'/tg/webhooks/bot/{BOT_TOKEN}'
@@ -41,6 +44,6 @@ MYSQL = {
 }
 
 REDIS = {
-    'ip':     config('REDIS_URL', 'redis://127.0.0.1'),
+    'host': config('REDIS_URL', 'redis://127.0.0.1'),
     'port': config('REDIS_PORT', 6379)
 }

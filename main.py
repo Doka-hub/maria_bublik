@@ -23,11 +23,12 @@ async def on_startup(app: web.Application):
     middlewares.setup(dp)
     filters.setup(dp)
     handlers.errors.setup(dp)
-    handlers.user.setup(dp)
     handlers.admin.setup(dp)
+    handlers.user.setup(dp)
     if config.BOT_PLACE == 'server':
         logger.info('Configure Webhook URL to: {url}', url=config.WEBHOOK_URL)
-        await dp.bot.set_webhook(config.WEBHOOK_URL)
+        await dp.bot.delete_webhook()
+        await dp.set_webhook(config.WEBHOOK_URL)
     elif config.BOT_PLACE == 'locale':
         await dp.start_polling()
 
