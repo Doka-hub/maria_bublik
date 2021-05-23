@@ -22,8 +22,6 @@ services:
         build:
             context: ./docker/postgres
             dockerfile: Dockerfile
-        #        volumes:
-        #            - postgres_volume:/var/lib/postgresql/data/
         env_file:
             - .envs/.env.prod.db
 
@@ -45,6 +43,8 @@ services:
         command: celery worker -A tasks -l info -B
         volumes:
             - .:/maria_bublyk
+        env_file:
+            - .envs/.env.prod
         depends_on:
             - db
             - redis
