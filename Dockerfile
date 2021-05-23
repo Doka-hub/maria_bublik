@@ -4,7 +4,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update && apt-get install gunicorn redis nano python3-dev postgresql musl-dev gcc wkhtmltopdf -y
-RUN mkdir /maria_bublyk_bot
+RUN mkdir /maria_bublyk_bot && mkdir /var/log/nginx/ && touch bot.letsspeak.com.ua.log && touch bot.letsspeak.com.ua.error.log
 
 WORKDIR /maria_bublyk_bot
 
