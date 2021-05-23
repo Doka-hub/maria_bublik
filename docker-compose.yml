@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
     web:
-        build: 
+        build:
             context: /maria_bublyk_bot
             dockerfile: Dockerfile
 		#./maria_bublyk_bot
