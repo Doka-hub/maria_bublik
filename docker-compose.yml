@@ -36,21 +36,23 @@ services:
             - "8000:80"
 
     redis:
-        image: "redis"
+        image: redis:alpine
         restart: always
         command: redis-server
         ports:
             - '6379:6379'
 
     celery:
-        build: .
+        build:
+            context: .
+        restart: always
         command: celery worker -A tasks -l info -B
-        links:
-            - redis
         volumes:
             - .:/maria_bublyk
         env_file:
             - .envs/.env.prod
+        links:
+            - redis
         depends_on:
             - db
             - redis
