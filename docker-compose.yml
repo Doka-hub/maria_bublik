@@ -45,6 +45,8 @@ services:
     celery:
         build: .
         command: celery worker -A tasks -l info -B
+        links:
+            - redis
         volumes:
             - .:/maria_bublyk
         env_file:
