@@ -3,7 +3,7 @@ FROM python:3.7
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-RUN apt-get update && apt-get install redis nano python3-dev postgresql-dev musl-dev gcc wkhtmltopdf -y
+RUN apt-get update && apt-get install redis nano python3-dev postgresql musl-dev gcc wkhtmltopdf -y
 RUN mkdir /maria_bublyk_bot
 
 WORKDIR /maria_bublyk_bot
