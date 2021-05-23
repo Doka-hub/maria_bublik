@@ -31,7 +31,7 @@ TIMEZONE = config('TIMEZONE')
 POSTGRESQL = {
     'host': config('POSTGRESQL_HOST', 'localhost'),
     'user': config('POSTGRESQL_USER', 'postgres'),
-    'db': config('POSTGRESQL_DATABASE_NAME', 'maria_bublik'),
+    'db': config('POSTGRESQL_DATABASE_NAME', 'maria_bublyk'),
 }
 
 MYSQL = {
