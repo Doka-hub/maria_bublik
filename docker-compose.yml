@@ -18,12 +18,7 @@ services:
             - db
 
     db:
-        image: postgres:latest
-        build:
-            context: ./docker/postgres
-            dockerfile: Dockerfile
-        ports:
-            - 5432:5432
+        image: postgres
         volumes:
             - ./data/db:/var/lib/postgresql/data
         env_file:
