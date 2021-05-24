@@ -29,9 +29,9 @@ TIMEZONE = config('TIMEZONE')
 
 # DATABASE
 POSTGRESQL = {
-    'host': config('POSTGRESQL_HOST', 'localhost'),
-    'user': config('POSTGRESQL_USER', 'postgres'),
-    'db': config('POSTGRESQL_DATABASE_NAME', 'maria_bublyk'),
+    'host': config('POSTGRES_HOST', 'localhost'),
+    'user': config('POSTGRES_USER', 'postgres'),
+    'db': config('POSTGRES_DB', 'maria_bublyk'),
 }
 
 MYSQL = {
