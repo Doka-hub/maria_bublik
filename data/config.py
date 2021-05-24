@@ -30,7 +30,8 @@ TIMEZONE = config('TIMEZONE')
 # DATABASE
 POSTGRESQL = {
     'host': config('POSTGRES_HOST', 'localhost'),
-    'user': config('POSTGRES_USER', 'postgres'),
+    'user': config('POSTGRES_USER', 'admin'),
+    'password': config('POSTGRES_PASSWORD', '123admin123'),
     'db': config('POSTGRES_DB', 'maria_bublyk'),
 }
 
