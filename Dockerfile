@@ -9,7 +9,7 @@ RUN mkdir /app && mkdir /var/log/nginx/ && touch bot.letsspeak.com.ua.log && tou
 WORKDIR /app
 
 COPY requirements.txt /app/
-RUN python -m pip install pip --upgrade && pip install -r /app/requirements.txt
+RUN python3 -m pip install pip --upgrade && pip install -r /app/requirements.txt
 COPY . /app/
 
 CMD gunicorn main:init     --access-logfile acces-log.log     --workers 2     --bind unix:/tmp/maria_bublyk.sock --worker-class aiohttp.GunicornWebWorker --timeout 120
