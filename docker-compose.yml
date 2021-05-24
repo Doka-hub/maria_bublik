@@ -22,6 +22,8 @@ services:
         build:
             context: ./docker/postgres
             dockerfile: Dockerfile
+        ports:
+            - 5432:5432
         env_file:
             - .envs/.env.prod.db
 
@@ -33,14 +35,14 @@ services:
             - web
             - db
         ports:
-            - "8000:80"
+            - 8000:80
 
     redis:
         image: redis:alpine
         restart: always
         command: redis-server
         ports:
-            - "6379:6379"
+            - 6379:6379
 
 #    celery:
 #        build:
