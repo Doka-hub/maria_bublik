@@ -16,6 +16,7 @@ if config.BOT_PLACE == 'locale':
     migrator = MySQLMigrator(database)
 else:
     database = PostgresqlDatabase(
+        host='127.0.0.1',
         database=config.POSTGRESQL['db'], user=config.POSTGRESQL['user'], password=config.POSTGRESQL['password']
     )
     migrator = PostgresqlMigrator(database)
