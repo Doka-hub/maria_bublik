@@ -10,7 +10,7 @@ services:
             - 8000
         # Подключаем статические и медиа файлы
         volumes:
-            - .:/maria_bublyk_bot
+            - .:/app
         env_file:
             - .envs/.env.prod
         # Дожидаемся запуска db
@@ -40,19 +40,19 @@ services:
         restart: always
         command: redis-server
         ports:
-            - '6379:6379'
+            - "6379:6379"
 
-    celery:
-        build:
-            context: .
-        restart: always
-        command: celery worker -A tasks -l info -B
-        volumes:
-            - .:/maria_bublyk
-        env_file:
-            - .envs/.env.prod
-        links:
-            - redis
-        depends_on:
-            - db
-            - redis
+#    celery:
+#        build:
+#            context: .
+#        restart: always
+#        command: celery worker -A tasks -l info -B
+#        volumes:
+#            - .:/app
+#        env_file:
+#            - .envs/.env.prod
+#        links:
+#            - redis
+#        depends_on:
+#            - db
+#            - redis

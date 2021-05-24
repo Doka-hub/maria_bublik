@@ -4,12 +4,12 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update && apt-get install gunicorn redis nano python3-dev postgresql musl-dev gcc wkhtmltopdf -y
-RUN mkdir /maria_bublyk_bot && mkdir /var/log/nginx/ && touch bot.letsspeak.com.ua.log && touch bot.letsspeak.com.ua.error.log
+RUN mkdir /app && mkdir /var/log/nginx/ && touch bot.letsspeak.com.ua.log && touch bot.letsspeak.com.ua.error.log
 
-WORKDIR /maria_bublyk_bot
+WORKDIR /app
 
-COPY requirements.txt /maria_bublyk_bot/
-RUN python -m pip install pip --upgrade && pip install -r /maria_bublyk_bot/requirements.txt
-COPY . /maria_bublyk_bot/
+COPY requirements.txt /app/
+RUN python -m pip install pip --upgrade && pip install -r /app/requirements.txt
+COPY . /app/
 
 CMD gunicorn main:init     --access-logfile acces-log.log     --workers 2     --bind unix:/tmp/maria_bublyk.sock --worker-class aiohttp.GunicornWebWorker --timeout 120
