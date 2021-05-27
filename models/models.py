@@ -43,10 +43,11 @@ class MaterialFormat(BaseModel):
     def setup(cls):
         super().setup()
         for name in [
-            'Вебiнары (безкоштовнi i платнi)',
-            'Повний курс розмовноi англійськоi',
+            'Вебінари (безкоштовнi i платнi)',
+            'Повний курс розмовної англійської',
             'Drinking&Speaking club',
-            'Я вже вчусь у вас'
+            'Я вже вчусь у вас',
+            'Шпаргалки і чеклисти'
         ]:
             cls.get_or_create(name=name)
 
