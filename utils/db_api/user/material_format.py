@@ -12,5 +12,6 @@ async def get_material_format(media_format_id: int) -> MaterialFormat:
 
 
 async def get_material_format_list() -> List[MaterialFormat]:
-    material_format_list = await objects.execute(MaterialFormat.select().where(MaterialFormat.is_active == True))
+    material_format_list = await objects.execute(
+        MaterialFormat.select().where(MaterialFormat.is_active == True).order_by('id'))
     return material_format_list

@@ -21,7 +21,6 @@ async def bot_start(message: types.Message):
     else:
         if not user.material_format:
             material_format_list_inline_keyboard = await get_material_format_choose_list_inline_keyboard()
-            print(material_format_list_inline_keyboard)
             await message.answer(
                 _('Супер 🚀 Дякую, {}. Який освітній формат Let’s Speak Вас найбільше цікавить?').format(user.name),
                 reply_markup=material_format_list_inline_keyboard)
